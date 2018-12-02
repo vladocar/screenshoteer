@@ -1,0 +1,31 @@
+{
+  "name": "screenshoteer",
+  "version": "1.0.0",
+  "description": "Make screenshots and device emulations form your terminal",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "screenshoteer": "./index.js"
+  },
+  "dependencies": {
+    "commander": "^2.19.0",
+    "puppeteer": "^1.10.0"
+  },
+  "keywords": [
+    "screenshots",
+    "emulations",
+    "mobile"
+  ],
+  "author": "Vladimir Carrer <vladocar@gmail.com> (http://www.vcarrer.com)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vladocar/screenshoteer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vladocar/screenshoteer/issues"
+  },
+  "homepage": "https://github.com/vladocar/screenshoteer#readme"
+}
