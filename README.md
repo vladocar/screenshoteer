@@ -28,7 +28,7 @@ Parameters:
 --pdf - generate additional pdf  
 --w - width of the Web Page in px  
 --h - height of the Web Page in px
---waitfor - wait time for the page load in milliseconds
+--waitfor - wait time for the page load in milliseconds  
 
 <p>
 
