@@ -39,14 +39,7 @@ console.log(fullPage);
   if (program.el) {
     const el = await page.$(program.el);
     await el.screenshot({
-      path:
-        (await page.title()) +
-        ' ' +
-        program.emulate +
-        ' ' +
-        d.getTime() +
-        program.el +
-        '.png'
+      path: `${await page.title()} ${program.emulate} ${program.el} ${d.getTime()}.png`
     });
   } else {
     await page.screenshot({path: await page.title() + " " +  program.emulate  + " " + d.getTime() + '.png', fullPage: fullPage})
