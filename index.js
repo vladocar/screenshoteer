@@ -13,6 +13,7 @@ program
     .option('--pdf, [pdf]', 'Generate PDF')
     .option('--w, [w]', 'width')
     .option('--h, [h]', 'height')
+    .option('--waitfor, [waitfor]', 'Wait time in milliseconds')
     .parse(process.argv);
 
 if (program.url) urlvalue = program.url
@@ -33,6 +34,7 @@ console.log(fullPage);
   if (program.w && program.h) await page.setViewport({width: Number(program.w), height: Number(program.h)})
   if (program.emulate) await page.emulate(devices[program.emulate]);
   await page.goto(urlvalue)
+  if (program.waitfor) await page.waitFor(Number(program.waitfor))
   await page.screenshot({path: await page.title() + " " +  program.emulate  + " " + d.getTime() + '.png', fullPage: fullPage})
   await page.emulateMedia('screen')
   if (program.pdf) await page.pdf({ path: await page.title() + " " +  program.emulate  + " " + d.getTime()  + '.pdf' })
