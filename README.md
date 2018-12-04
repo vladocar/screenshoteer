@@ -27,7 +27,7 @@ Parameters:
 --fullpage - can be true or false. It will take screenshot of entire web page if is true. True is the default parameter.  
 --pdf - generate additional pdf  
 --w - width of the Web Page in px  
---h - height of the Web Page in px
+--h - height of the Web Page in px  
 --waitfor - wait time for the page load in milliseconds  
 
 <p>
