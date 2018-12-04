@@ -29,6 +29,7 @@ Parameters:
 --w - width of the Web Page in px  
 --h - height of the Web Page in px  
 --waitfor - wait time for the page load in milliseconds  
+--el - css selector document.querySelector
 
 <p>
 
@@ -49,6 +50,7 @@ screenshoteer --url https://lobste.rs --pdf
 
 screenshoteer --url https://lobste.rs --w 500
 
+screenshoteer --url  https://news.ycombinator.com/item?id=18598672 --el ".fatitem"
 
 ```
 <p> List of of supported mobile devices: https://github.com/GoogleChrome/puppeteer/blob/master/DeviceDescriptors.js
