@@ -35,17 +35,19 @@ console.log(fullPage);
   if (program.w && program.h) await page.setViewport({width: Number(program.w), height: Number(program.h)})
   if (program.emulate) await page.emulate(devices[program.emulate]);
   await page.goto(urlvalue)
+  const title = await page.title()
+  const t = title.replace(/[/\\?%*:|"<>]/g, '-')
   if (program.waitfor) await page.waitFor(Number(program.waitfor))
   if (program.el) {
     const el = await page.$(program.el);
     await el.screenshot({
-      path: `${await page.title()} ${program.emulate} ${program.el} ${d.getTime()}.png`
+      path: `${t} ${program.emulate} ${program.el} ${d.getTime()}.png`
     });
   } else {
-    await page.screenshot({path: await page.title() + " " +  program.emulate  + " " + d.getTime() + '.png', fullPage: fullPage})
+    await page.screenshot({path: t + " " +  program.emulate  + " " + d.getTime() + '.png', fullPage: fullPage})
   }
   await page.emulateMedia('screen')
-  if (program.pdf) await page.pdf({ path: await page.title() + " " +  program.emulate  + " " + d.getTime()  + '.pdf' })
-  console.log(await page.title())
+  if (program.pdf) await page.pdf({ path: t + " " +  program.emulate  + " " + d.getTime()  + '.pdf' })
+  console.log(t)
   await browser.close()
 })()
