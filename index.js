@@ -14,6 +14,7 @@ program
     .option('--w, [w]', 'width')
     .option('--h, [h]', 'height')
     .option('--waitfor, [waitfor]', 'Wait time in milliseconds')
+    .option('--el, [el]', 'element css selector')
     .parse(process.argv);
 
 if (program.url) urlvalue = program.url
@@ -35,7 +36,21 @@ console.log(fullPage);
   if (program.emulate) await page.emulate(devices[program.emulate]);
   await page.goto(urlvalue)
   if (program.waitfor) await page.waitFor(Number(program.waitfor))
-  await page.screenshot({path: await page.title() + " " +  program.emulate  + " " + d.getTime() + '.png', fullPage: fullPage})
+  if (program.el) {
+    const el = await page.$(program.el);
+    await el.screenshot({
+      path:
+        (await page.title()) +
+        ' ' +
+        program.emulate +
+        ' ' +
+        d.getTime() +
+        program.el +
+        '.png'
+    });
+  } else {
+    await page.screenshot({path: await page.title() + " " +  program.emulate  + " " + d.getTime() + '.png', fullPage: fullPage})
+  }
   await page.emulateMedia('screen')
   if (program.pdf) await page.pdf({ path: await page.title() + " " +  program.emulate  + " " + d.getTime()  + '.pdf' })
   console.log(await page.title())
