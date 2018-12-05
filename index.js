@@ -20,10 +20,7 @@ program
 if (program.url) urlvalue = program.url
 else process.exit(console.log("Please add --url parameter. Something like this: $ screenshoteer --url http:www.example.com"));
 
-
-if (program.fullpage && program.fullpage == "true") fullPage = true
-if (program.fullpage && program.fullpage == "false") fullPage = false
-else fullPage = true;
+!program.fullpage ? fullPage = true : fullPage = JSON.parse(program.fullpage); 
 
 console.log(urlvalue);
 console.log(fullPage);
