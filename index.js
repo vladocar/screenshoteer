@@ -29,25 +29,39 @@ console.log(urlvalue);
 console.log(fullPage);
 
 (async () => {
-  const browser = await puppeteer.launch()
-  const page = await browser.newPage()
-  const d = new Date()
-  if (program.w && program.h) await page.setViewport({width: Number(program.w), height: Number(program.h)})
-  if (program.emulate) await page.emulate(devices[program.emulate]);
-  await page.goto(urlvalue)
-  const title = await page.title()
-  const t = title.replace(/[/\\?%*:|"<>]/g, '-')
-  if (program.waitfor) await page.waitFor(Number(program.waitfor))
-  if (program.el) {
-    const el = await page.$(program.el);
-    await el.screenshot({
-      path: `${t} ${program.emulate} ${program.el} ${d.getTime()}.png`
-    });
-  } else {
-    await page.screenshot({path: t + " " +  program.emulate  + " " + d.getTime() + '.png', fullPage: fullPage})
+
+  try {
+    await execute();
+  } catch(e) {
+    console.error(e);
+    process.exit(1);
   }
-  await page.emulateMedia('screen')
-  if (program.pdf) await page.pdf({ path: t + " " +  program.emulate  + " " + d.getTime()  + '.pdf' })
-  console.log(t)
-  await browser.close()
+
+  async function execute() {
+    const browser = await puppeteer.launch()
+    const page = await browser.newPage()
+    const d = new Date()
+    if (program.w && program.h) await page.setViewport({width: Number(program.w), height: Number(program.h)})
+    if (program.emulate) await page.emulate(devices[program.emulate]);
+    await page.goto(urlvalue)
+    const title = await page.title()
+    const t = title.replace(/[/\\?%*:|"<>]/g, '-')
+    if (program.waitfor) await page.waitFor(Number(program.waitfor))
+    if (program.el) {
+      const el = await page.$(program.el);
+      await el.screenshot({
+        path: `${t} ${program.emulate} ${program.el} ${d.getTime()}.png`
+      });
+    } else {
+      await page.screenshot({path: t + " " +  program.emulate  + " " + d.getTime() + '.png', fullPage: fullPage})
+    }
+    await page.emulateMedia('screen')
+    if (program.pdf) await page.pdf({ path: t + " " +  program.emulate  + " " + d.getTime()  + '.pdf' })
+    console.log(t)
+    await browser.close()
+  }
+
 })()
+
+
+
