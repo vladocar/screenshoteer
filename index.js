@@ -42,7 +42,7 @@ console.log(fullPage);
     if (program.w && program.h) await page.setViewport({width: Number(program.w), height: Number(program.h)})
     if (program.emulate) await page.emulate(devices[program.emulate]);
     if (program.auth) {
-      const [username, password] = program.auth.split(':');
+      const [username, password] = program.auth.split(';');
       await page.authenticate({username:username, password:password});
     } 
     await page.goto(urlvalue)
