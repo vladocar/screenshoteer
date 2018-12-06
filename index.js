@@ -18,7 +18,7 @@ program
 
 if (!program.url) {
   console.log('Please add --url parameter.\n' +
-              'Something like this: $ screenshoteer --url http:www.example.com');
+              'Something like this: $ screenshoteer --url http://www.example.com');
   process.exit();
 }
 
