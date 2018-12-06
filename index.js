@@ -4,7 +4,7 @@ const puppeteer = require('puppeteer')
 const devices = require('puppeteer/DeviceDescriptors')
 const program = require('commander')
 
-var urlvalue, emulate = "";
+let urlvalue;
 
 program
     .option('--url, [url]', 'The url')
@@ -40,7 +40,10 @@ console.log(fullPage);
     const page = await browser.newPage()
     const timestamp = new Date().getTime()
     if (program.w && program.h) await page.setViewport({width: Number(program.w), height: Number(program.h)})
-    if (program.emulate) await page.emulate(devices[program.emulate]);
+    if (program.emulate)
+      await page.emulate(devices[program.emulate]);
+    else
+      program.emulate = '';
     if (program.auth) {
       const [username, password] = program.auth.split(';');
       await page.authenticate({username:username, password:password});
