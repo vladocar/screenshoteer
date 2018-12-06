@@ -15,6 +15,7 @@ program
     .option('--h, [h]', 'height')
     .option('--waitfor, [waitfor]', 'Wait time in milliseconds')
     .option('--el, [el]', 'element css selector')
+    .option('--auth, [auth]', 'Basic HTTP authentication')
     .parse(process.argv);
 
 if (program.url) urlvalue = program.url
@@ -40,6 +41,10 @@ console.log(fullPage);
     const timestamp = new Date().getTime()
     if (program.w && program.h) await page.setViewport({width: Number(program.w), height: Number(program.h)})
     if (program.emulate) await page.emulate(devices[program.emulate]);
+    if (program.auth) {
+      const [username, password] = program.auth.split(';');
+      await page.authenticate({username:username, password:password});
+    } 
     await page.goto(urlvalue)
     const title = (await page.title()).replace(/[/\\?%*:|"<>]/g, '-')
     if (program.waitfor) await page.waitFor(Number(program.waitfor))
