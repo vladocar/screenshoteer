@@ -29,7 +29,7 @@ Parameters:
 --w - width of the Web Page in px  
 --h - height of the Web Page in px  
 --waitfor - wait time for the page load in milliseconds  
---el - css selector document.querySelector
+--el - css selector document.querySelector  
 --auth - basic http authentication
 
 <p>
