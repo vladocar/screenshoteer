@@ -53,7 +53,7 @@ screenshoteer --url https://lobste.rs --w 500
 
 screenshoteer --url  https://news.ycombinator.com/item?id=18598672 --el ".fatitem"
 
-screenshoteer --url  https:/site.com --auth username;password
+screenshoteer --url  https://site.com --auth username;password
 
 ```
 <p> List of of supported mobile devices: https://github.com/GoogleChrome/puppeteer/blob/master/DeviceDescriptors.js
