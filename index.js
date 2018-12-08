@@ -1,10 +1,8 @@
 #!/usr/bin/env node
 
-const puppeteer = require('puppeteer')
-const devices = require('puppeteer/DeviceDescriptors')
-const program = require('commander')
-
-var urlvalue, emulate = "";
+const puppeteer = require('puppeteer');
+const devices = require('puppeteer/DeviceDescriptors');
+const program = require('commander');
 
 program
     .option('--url, [url]', 'The url')
@@ -15,15 +13,19 @@ program
     .option('--h, [h]', 'height')
     .option('--waitfor, [waitfor]', 'Wait time in milliseconds')
     .option('--el, [el]', 'element css selector')
+    .option('--auth, [auth]', 'Basic HTTP authentication')
     .parse(process.argv);
 
-if (program.url) urlvalue = program.url
-else process.exit(console.log("Please add --url parameter. Something like this: $ screenshoteer --url http:www.example.com"));
+if (!program.url) {
+  console.log('Please add --url parameter.\n' +
+              'Something like this: $ screenshoteer --url http://www.example.com');
+  process.exit();
+}
 
-!program.fullpage ? fullPage = true : fullPage = JSON.parse(program.fullpage); 
+!program.fullpage ? program.fullPage = true : program.fullPage = JSON.parse(program.fullpage);
 
-console.log(urlvalue);
-console.log(fullPage);
+console.log(program.url);
+console.log(program.fullPage);
 
 (async () => {
 
@@ -35,35 +37,36 @@ console.log(fullPage);
   }
 
   async function execute() {
-    const browser = await puppeteer.launch()
-    const page = await browser.newPage()
-    const d = new Date()
+    const browser = await puppeteer.launch();
+    const page = await browser.newPage();
+    const timestamp = new Date().getTime();
     if (program.w || program.h) {
       const newWidth = !program.w?600:program.w
       const newHeight = !program.h?'0':program.h
       if (program.h && !program.fullpage) fullPage = false;
       await page.setViewport({width: Number(newWidth), height: Number(newHeight)})
     }
-    if (program.emulate) await page.emulate(devices[program.emulate]);
-    await page.goto(urlvalue)
-    const title = await page.title()
-    const t = title.replace(/[/\\?%*:|"<>]/g, '-')
-    if (program.waitfor) await page.waitFor(Number(program.waitfor))
+    if (program.emulate)
+      await page.emulate(devices[program.emulate]);
+    else
+      program.emulate = '';
+    if (program.auth) {
+      const [username, password] = program.auth.split(';');
+      await page.authenticate({ username, password });
+    } 
+    await page.goto(program.url);
+    const title = (await page.title()).replace(/[/\\?%*:|"<>]/g, '-');
+    if (program.waitfor) await page.waitFor(Number(program.waitfor));
     if (program.el) {
       const el = await page.$(program.el);
-      await el.screenshot({
-        path: `${t} ${program.emulate} ${program.el} ${d.getTime()}.png`
-      });
+      await el.screenshot({path: `${title} ${program.emulate} ${program.el} ${timestamp}.png`});
     } else {
-      await page.screenshot({path: t + " " +  program.emulate  + " " + d.getTime() + '.png', fullPage: fullPage})
+      await page.screenshot({path: `${title} ${program.emulate} ${timestamp}.png`, fullPage: program.fullPage});
     }
-    await page.emulateMedia('screen')
-    if (program.pdf) await page.pdf({ path: t + " " +  program.emulate  + " " + d.getTime()  + '.pdf' })
-    console.log(t)
-    await browser.close()
+    await page.emulateMedia('screen');
+    if (program.pdf) await page.pdf({path: `${title} ${program.emulate} ${timestamp}.pdf`});
+    console.log(title);
+    await browser.close();
   }
 
 })()
-
-
-
