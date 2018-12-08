@@ -43,7 +43,7 @@ console.log(program.fullPage);
     if (program.w || program.h) {
       const newWidth = !program.w?600:program.w
       const newHeight = !program.h?'0':program.h
-      if (program.h && !program.fullpage) fullPage = false;
+      if (program.h && !program.fullpage) program.fullPage = false;
       await page.setViewport({width: Number(newWidth), height: Number(newHeight)})
     }
     if (program.emulate)
