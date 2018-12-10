@@ -28,7 +28,6 @@ console.log(program.url);
 console.log(program.fullPage);
 
 (async () => {
-
   try {
     await execute();
   } catch(e) {
@@ -50,6 +49,7 @@ console.log(program.fullPage);
       await page.emulate(devices[program.emulate]);
     else
       program.emulate = '';
+      
     if (program.auth) {
       const [username, password] = program.auth.split(';');
       await page.authenticate({ username, password });
@@ -68,5 +68,4 @@ console.log(program.fullPage);
     console.log(title);
     await browser.close();
   }
-
 })()
