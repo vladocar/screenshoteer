@@ -14,6 +14,7 @@ program
     .option('--waitfor, [waitfor]', 'Wait time in milliseconds')
     .option('--el, [el]', 'element css selector')
     .option('--auth, [auth]', 'Basic HTTP authentication')
+    .option('--no, [no]', 'Exclude')
     .parse(process.argv);
 
 if (!program.url) {
@@ -38,6 +39,15 @@ console.log(program.fullPage);
   async function execute() {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
+    if (program.no) {
+      await page.setRequestInterception(true);
+      page.on('request', request => {
+        if (request.resourceType() === program.no)
+          request.abort();
+          else
+        request.continue();
+      });
+    }
     const timestamp = new Date().getTime();
     if (program.w || program.h) {
       const newWidth = !program.w?600:program.w
@@ -53,7 +63,7 @@ console.log(program.fullPage);
     if (program.auth) {
       const [username, password] = program.auth.split(';');
       await page.authenticate({ username, password });
-    } 
+    }
     await page.goto(program.url);
     const title = (await page.title()).replace(/[/\\?%*:|"<>]/g, '-');
     if (program.waitfor) await page.waitFor(Number(program.waitfor));

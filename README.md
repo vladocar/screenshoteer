@@ -36,6 +36,7 @@ Parameters:
 --waitfor - wait time for the page load in milliseconds  
 --el - css selector document.querySelector  
 --auth - basic http authentication
+--no - exclude "image", "stylesheet", "script", "font"
 
 <p>
 
@@ -59,6 +60,10 @@ screenshoteer --url https://lobste.rs --w 500
 screenshoteer --url  https://news.ycombinator.com/item?id=18598672 --el ".fatitem"
 
 screenshoteer --url  https://site.com --auth "username;password"
+
+screenshoteer --url https://www.nytimes.com --no "image"
+
+screenshoteer --url https://www.nytimes.com --no "script"   
 
 screenshoteer --url file:///Users/../index.html
 ```

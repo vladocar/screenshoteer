@@ -1,6 +1,6 @@
 {
   "name": "screenshoteer",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Make screenshots and device emulations form your terminal",
   "main": "index.js",
   "scripts": {
