@@ -37,7 +37,8 @@ Parameters:
 --waitfor - wait time for the page load in milliseconds  
 --el - css selector document.querySelector  
 --auth - basic http authentication  
---no - exclude "image", "stylesheet", "script", "font"
+--no - exclude "image", "stylesheet", "script", "font"  
+--click - example: ".selector>a" excellent way to close popups or to click some buttons on the page.
 
 <p>
 
@@ -64,7 +65,9 @@ screenshoteer --url  https://site.com --auth "username;password"
 
 screenshoteer --url https://www.nytimes.com --no "image"
 
-screenshoteer --url https://www.nytimes.com --no "script"   M
+screenshoteer --url https://www.nytimes.com --no "script"
+
+screenshoteer --url https://www.economist.com/ --click ".ribbon__close-button"
 
 screenshoteer --url file:///Users/../index.html
 ```

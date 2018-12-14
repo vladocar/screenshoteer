@@ -15,6 +15,7 @@ program
     .option('--el, [el]', 'element css selector')
     .option('--auth, [auth]', 'Basic HTTP authentication')
     .option('--no, [no]', 'Exclude')
+    .option('--click, [click]', 'Click')
     .parse(process.argv);
 
 if (!program.url) {
@@ -59,7 +60,7 @@ console.log(program.fullPage);
       await page.emulate(devices[program.emulate]);
     else
       program.emulate = '';
-      
+
     if (program.auth) {
       const [username, password] = program.auth.split(';');
       await page.authenticate({ username, password });
@@ -67,6 +68,7 @@ console.log(program.fullPage);
     await page.goto(program.url);
     const title = (await page.title()).replace(/[/\\?%*:|"<>]/g, '-');
     if (program.waitfor) await page.waitFor(Number(program.waitfor));
+    if (program.click) await page.click(program.click);
     if (program.el) {
       const el = await page.$(program.el);
       await el.screenshot({path: `${title} ${program.emulate} ${program.el} ${timestamp}.png`});
