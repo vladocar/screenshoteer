@@ -35,7 +35,7 @@ Parameters:
 --h - height of the Web Page in px  
 --waitfor - wait time for the page load in milliseconds  
 --el - css selector document.querySelector  
---auth - basic http authentication
+--auth - basic http authentication  
 --no - exclude "image", "stylesheet", "script", "font"
 
 <p>
