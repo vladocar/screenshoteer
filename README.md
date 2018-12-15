@@ -38,7 +38,7 @@ Parameters:
 --el - css selector document.querySelector  
 --auth - basic http authentication  
 --no - exclude "image", "stylesheet", "script", "font"  
---click - example: ".selector>a" excellent way to close popups or to click some buttons on the page.
+--click - example: ".selector>a" excellent way to close popups or to click some buttons on the page.  
 --file - output file name (optional, otherwise based on page title and timestamp)
 <p>
 
