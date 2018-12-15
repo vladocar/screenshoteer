@@ -16,6 +16,7 @@ program
     .option('--auth, [auth]', 'Basic HTTP authentication')
     .option('--no, [no]', 'Exclude')
     .option('--click, [click]', 'Click')
+    .option('--file, [file]', 'Output file')
     .parse(process.argv);
 
 if (!program.url) {
@@ -69,11 +70,12 @@ console.log(program.fullPage);
     const title = (await page.title()).replace(/[/\\?%*:|"<>]/g, '-');
     if (program.waitfor) await page.waitFor(Number(program.waitfor));
     if (program.click) await page.click(program.click);
+    const file = program.file ? program.file : `${title} ${program.emulate} ${program.el} ${timestamp}.png`;
     if (program.el) {
       const el = await page.$(program.el);
-      await el.screenshot({path: `${title} ${program.emulate} ${program.el} ${timestamp}.png`});
+      await el.screenshot({path: file});
     } else {
-      await page.screenshot({path: `${title} ${program.emulate} ${timestamp}.png`, fullPage: program.fullPage});
+      await page.screenshot({path: file, fullPage: program.fullPage});
     }
     await page.emulateMedia('screen');
     if (program.pdf) await page.pdf({path: `${title} ${program.emulate} ${timestamp}.pdf`});
