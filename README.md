@@ -39,7 +39,7 @@ Parameters:
 --auth - basic http authentication  
 --no - exclude "image", "stylesheet", "script", "font"  
 --click - example: ".selector>a" excellent way to close popups or to click some buttons on the page.
-
+--file - output file name (optional, otherwise based on page title and timestamp)
 <p>
 
 <h4>Example: </h4>
@@ -70,6 +70,8 @@ screenshoteer --url https://www.nytimes.com --no "script"
 screenshoteer --url https://www.economist.com/ --click ".ribbon__close-button"
 
 screenshoteer --url file:///Users/../index.html
+
+screenshoteer --url https://www.slashdot.org --file /tmp/slashdot.png
 ```
 <p> List of of supported mobile devices: https://github.com/GoogleChrome/puppeteer/blob/master/DeviceDescriptors.js
 </p>
