@@ -12,6 +12,7 @@ program
     .option('--w, [w]', 'width')
     .option('--h, [h]', 'height')
     .option('--waitfor, [waitfor]', 'Wait time in milliseconds')
+    .option('--waitforselector, [waitforselector]', 'Wait for the selector to appear in page')
     .option('--el, [el]', 'element css selector')
     .option('--auth, [auth]', 'Basic HTTP authentication')
     .option('--no, [no]', 'Exclude')
@@ -69,6 +70,7 @@ console.log(program.fullPage);
     await page.goto(program.url);
     const title = (await page.title()).replace(/[/\\?%*:|"<>]/g, '-');
     if (program.waitfor) await page.waitFor(Number(program.waitfor));
+    if (program.waitforselector) await page.waitForSelector(program.waitforselector);
     if (program.click) await page.click(program.click);
     const file = program.file ? program.file : `${title} ${program.emulate} ${program.el} ${timestamp}.png`;
     if (program.el) {

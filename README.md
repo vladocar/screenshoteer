@@ -26,8 +26,10 @@ screenshoteer --url file:///C:/Users/../Random-HTML-file.html
 <p>And with the help of puppeteer(Headless Chrome) it will generate screenshot of the entire web page.</p>
 
 <p>
-Parameters:
+Parameters:  
 
+
+-h help  
 --url web page url  
 --emulate - emulate web device example: --emulate "iPhone 6"  
 --fullpage - can be true or false. It will take screenshot of entire web page if is true. True is the default parameter.  
@@ -35,6 +37,7 @@ Parameters:
 --w - width of the Web Page in px  
 --h - height of the Web Page in px  
 --waitfor - wait time for the page load in milliseconds  
+--waitforselector - wait for the selector to appear in page
 --el - css selector document.querySelector  
 --auth - basic http authentication  
 --no - exclude "image", "stylesheet", "script", "font"  
