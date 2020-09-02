@@ -33,6 +33,10 @@ if (!program.url) {
 console.log(program.url);
 console.log(program.fullPage);
 
+
+const deviceName = puppeteer.devices[program.emulate];
+
+
 (async () => {
   try {
     await execute();
@@ -67,7 +71,7 @@ console.log(program.fullPage);
       await page.emulateVisionDeficiency(program.vd);
     }
     if (program.emulate)
-      await page.emulate(devices[program.emulate]);
+      await page.emulate(deviceName);
     else
       program.emulate = '';
 
