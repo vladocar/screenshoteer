@@ -18,6 +18,8 @@ program
     .option('--no, [no]', 'Exclude')
     .option('--click, [click]', 'Click')
     .option('--file, [file]', 'Output file')
+    .option('--theme, [theme]', 'Color Theme light or dark')
+    .option('--vd, [vd]', 'Emulate vision deficiency')
     .parse(process.argv);
 
 if (!program.url) {
@@ -57,6 +59,12 @@ console.log(program.fullPage);
       const newHeight = !program.h?'0':program.h
       if (program.h && !program.fullpage) program.fullPage = false;
       await page.setViewport({width: Number(newWidth), height: Number(newHeight)})
+    }
+    if (program.theme) {
+      await page.emulateMediaFeatures([{ name: 'prefers-color-scheme', value: program.theme }]);
+    }
+    if (program.vd) {
+      await page.emulateVisionDeficiency(program.vd);
     }
     if (program.emulate)
       await page.emulate(devices[program.emulate]);

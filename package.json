@@ -1,17 +1,17 @@
 {
   "name": "screenshoteer",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "description": "Make screenshots and device emulations form your terminal",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "screenshoteer": "./index.js"
+    "screenshoteer": "index.js"
   },
   "dependencies": {
     "commander": "^2.19.0",
-    "puppeteer": "^1.10.0"
+    "puppeteer": "^4.00.0"
   },
   "keywords": [
     "screenshots",
