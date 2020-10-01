@@ -1,6 +1,6 @@
 <h1 align="center"> Screenshoteer </h1>
 <p> This is a awesome tool to take your website screenshots using command line. you can do this with the help of some useful commands.
-plese go and use this awesome tool for  your websites.</p>
+please go and use this awesome tool for  your websites.</p>
 
 <p align="center"> Makes web screenshots and mobile emulations from the command line. </p>
 
