@@ -1,8 +1,8 @@
 <h1 align="center"> Screenshoteer </h1>
-<p> This is a awesome tool to take your website screenshots using command line. you can do this with the help of some useful commands.
+<p> This is an awesome tool to take your website screenshots using command line. you can do this with the help of some useful commands.
 plese go and use this awesome tool for  your websites.</p>
 
-<p align="center"> Makes web screenshots and mobile emulations from the command line. </p>
+<p align="center"> Makes a useful web screenshots and mobile emulations from the command line. </p>
 
 <p align="center"><img src="carbon-shot.png" /></p>
 <hr/>
@@ -84,9 +84,9 @@ screenshoteer --url https://mxb.dev/blog/color-theme-switcher/ --theme dark
 
 screenshoteer --url https://news.ycombinator.com --vd blurredVision
 ```
-<p> List of of supported mobile devices: https://github.com/GoogleChrome/puppeteer/blob/master/DeviceDescriptors.js
+<p> here is a List of of supported mobile devices: https://github.com/GoogleChrome/puppeteer/blob/master/DeviceDescriptors.js
 </p>
 
 <h3>License</h3>
 
-This project is licensed under the MIT License
+This project is licensed under the MIT License.
