@@ -2,7 +2,7 @@
 <p> This is an awesome tool to take your website screenshots using command line. you can do this with the help of some useful commands.
 plese go and use this awesome tool for  your websites.</p>
 
-<p align="center"> Makes a useful web screenshots and mobile emulations from the command line. </p>
+<p align="center"> Make a useful web screenshots and mobile emulations from the command line. </p>
 
 <p align="center"><img src="carbon-shot.png" /></p>
 <hr/>
