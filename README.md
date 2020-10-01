@@ -1,4 +1,4 @@
-<h1 align="center"> Screenshoteer </h1>
+<h2 align="center"> Screenshoteer </h2>
 <p> This is a awesome tool to take your website screenshots using command line. you can do this with the help of some useful commands.
 plese go and use this awesome tool for  your websites.</p>
 
@@ -9,7 +9,7 @@ plese go and use this awesome tool for  your websites.</p>
 
 <p>Tool based on <a href="https://github.com/GoogleChrome/puppeteer">puppeteer</a>. </p>
 
-<h4>Installation </h4>
+<h5>Installation </h5>
 
 ```shell
 npm i -g screenshoteer
@@ -49,7 +49,7 @@ Parameters:
 --vd - Emulate vision deficiency 'achromatopsia', 'deuteranopia', 'protanopia', 'tritanopia', 'blurredVision', and 'none'
 <p>
 
-<h4>Example: </h4>
+<h5>Example: </h5>
 
 ```shell
 screenshoteer  --url https://news.ycombinator.com --fullpage false
@@ -87,6 +87,6 @@ screenshoteer --url https://news.ycombinator.com --vd blurredVision
 <p> List of of supported mobile devices: https://github.com/GoogleChrome/puppeteer/blob/master/DeviceDescriptors.js
 </p>
 
-<h3>License</h3>
+<h4>License</h4>
 
-This project is licensed under the MIT License
+This project is licensed under the MIT License.
