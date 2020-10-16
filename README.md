@@ -1,5 +1,5 @@
 <h1 align="center"> Screenshoteer </h1>
-<p> This is a awesome tool to take your website screenshots using command line. you can do this with the help of some useful commands.
+<p> AN amazing project- this is a awesome tool to take your website screenshots using command line. you can do this with the help of some useful commands.
 plese go and use this awesome tool for  your websites.</p>
 
 <p align="center"> Makes web screenshots and mobile emulations from the command line. </p>
@@ -9,7 +9,7 @@ plese go and use this awesome tool for  your websites.</p>
 
 <p>Tool based on <a href="https://github.com/GoogleChrome/puppeteer">puppeteer</a>. </p>
 
-<h4>Installation </h4>
+<h4>Installation Guide </h4>
 
 ```shell
 npm i -g screenshoteer
@@ -90,3 +90,4 @@ screenshoteer --url https://news.ycombinator.com --vd blurredVision
 <h3>License</h3>
 
 This project is licensed under the MIT License
+Thank You.
