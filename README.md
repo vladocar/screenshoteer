@@ -12,7 +12,7 @@
 ```shell
 npm i -g screenshoteer
 ```
-<p>You can use  screenshoteer with easy and efficient way like this:</p>
+<p>You can use  screenshoteer like this:</p>
 
 ```shell
 screenshoteer  --url https://www.example.com
