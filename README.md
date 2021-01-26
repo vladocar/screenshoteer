@@ -42,7 +42,7 @@ Parameters:
 --auth - basic http authentication  
 --no - exclude "image", "stylesheet", "script", "font"  
 --click - example: ".selector>a" excellent way to close popups or to click some buttons on the page.  
---file - output file name (optional, otherwise based on page title and timestamp)
+--file - output file name (optional, otherwise based on page title and timestamp)  
 --theme - switch to dark or light color theme  
 --vd - Emulate vision deficiency 'achromatopsia', 'deuteranopia', 'protanopia', 'tritanopia', 'blurredVision', and 'none'
 <p>
