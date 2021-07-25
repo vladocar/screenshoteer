@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
 const puppeteer = require('puppeteer');
-const devices = require('puppeteer/DeviceDescriptors');
 const program = require('commander');
 
 program
@@ -51,18 +50,19 @@ const deviceName = puppeteer.devices[program.emulate];
     if (program.no) {
       await page.setRequestInterception(true);
       page.on('request', request => {
-        if (request.resourceType() === program.no)
+        if (request.resourceType() === program.no) {
           request.abort();
-          else
-        request.continue();
+        } else {
+          request.continue();
+        }
       });
     }
     const timestamp = new Date().getTime();
     if (program.w || program.h) {
-      const newWidth = !program.w?600:program.w
-      const newHeight = !program.h?'0':program.h
+      const newWidth = !program.w?600:program.w;
+      const newHeight = !program.h?'0':program.h;
       if (program.h && !program.fullpage) program.fullPage = false;
-      await page.setViewport({width: Number(newWidth), height: Number(newHeight)})
+      await page.setViewport({width: Number(newWidth), height: Number(newHeight)});
     }
     if (program.theme) {
       await page.emulateMediaFeatures([{ name: 'prefers-color-scheme', value: program.theme }]);
@@ -70,10 +70,11 @@ const deviceName = puppeteer.devices[program.emulate];
     if (program.vd) {
       await page.emulateVisionDeficiency(program.vd);
     }
-    if (program.emulate)
+    if (program.emulate) {
       await page.emulate(deviceName);
-    else
+    } else {
       program.emulate = '';
+    }
 
     if (program.auth) {
       const [username, password] = program.auth.split(';');

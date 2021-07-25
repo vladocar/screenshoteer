@@ -17,7 +17,7 @@ npm i -g screenshoteer
 ```shell
 screenshoteer  --url https://www.example.com
 
-or .html localy copy the url path from the browser
+or .html locally copy the url path from the browser
 
 screenshoteer --url file:///Users/../index.html
 screenshoteer --url file:///C:/Users/../Random-HTML-file.html
@@ -32,7 +32,7 @@ Parameters:
 -h help  
 --url web page url  
 --emulate - emulate web device example: --emulate "iPhone 6"  
---fullpage - can be true or false. It will take screenshot of entire web page if is true. True is the default parameter.  
+--fullpage - can be true or false. It will take screenshot of entire web page if it is true. True is the default parameter.  
 --pdf - generate additional pdf  
 --w - width of the Web Page in px  
 --h - height of the Web Page in px  
